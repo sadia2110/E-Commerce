@@ -30,7 +30,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="shop.html">Shop</a>
@@ -45,10 +45,13 @@
                         <a class="nav-link" href="#">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <i class="fal fa-search"></i>
-                        <i class="fal fa-shopping-cart"></i>
+                        <a class="nav-link" href=""> <i class="fal fa-search"></i></a>
                     </li>
-
+                    <li>
+                        <a class="nav-link" href="cart.html"><i class="fal fa-shopping-cart"></i></a>
+                    </li> <li class="nav-item">
+                        <a class="nav-link" href="signup.html"><i class="fas fa-user"></i></a> 
+                    </li>
             </div>
         </div>
     </nav>
@@ -56,33 +59,101 @@
     <section id="blog-home" class="pt-5 mt-5 container">
         <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
         <hr>
-        </section>
-        <section id="cart-container" class="container my-5">
+    </section>
+    <section id="cart-container" class="container my-5">
         <table width="100%">
-        <thead>
-        
-        <tr>
-        <td>Remove</td>
-        <td>Image</td>
-        <td>Product</td>
-        <td>Price</td>
-        <td>Quantity</td>
-        <td>Total</td>
-        </tr>
-        </thead>
+            <thead>
 
-        <tbody>
-            <tr>
-                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                <td><img src="img/shoes/1.jpg" alt=""></td>
-                <td><h5>Sporty Shoes</h5></td>
-                <td><h5>$65</h5></td>
-                <td><input class="w-25 pl-1" value="1" type="number"></td>
-                <td><h5>$130</h5></td>
-            </tr>
-        </tbody>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><img src="img/shoes/1.jpg" alt=""></td>
+                    <td>
+                        <h5>Sporty Shoes</h5>
+                    </td>
+                    <td>
+                        <h5>$65</h5>
+                    </td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>
+                        <h5>$130</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><img src="img/shoes/2.jpg" alt=""></td>
+                    <td>
+                        <h5>Nike Shoes</h5>
+                    </td>
+                    <td>
+                        <h5>$55</h5>
+                    </td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>
+                        <h5>$55</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><img src="img/shoes/3.jpg" alt=""></td>
+                    <td>
+                        <h5>Orange Shoes</h5>
+                    </td>
+                    <td>
+                        <h5>$75</h5>
+                    </td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>
+                        <h5>$75</h5>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-        </section>
+    </section>
+
+    <section id="cart-bottom" class="container">
+        <div class="row">
+            <div class="coupon col-lg-6 col-md-6 col-12 mb-4">
+                <div>
+                    <h5>COUPON</h5>
+                    <p>Enter your coupon code if you have one.
+                    </p>
+                    <input type="text" placeholder="Coupon Code">
+                    <button>APPLY COUPON</button>
+                </div>
+            </div>
+            <div class="total col-lg-6 col-md-6 col-12">
+                <div>
+                    <h5>CART TOTAL</h5>
+                    <div class="d-flex justify-content-between">
+                        <h6>SUBTOTAL</h6>
+                        <p>$215.50</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6>SHIPPING</h6>
+                        <p>$15.50</p>
+                    </div>
+                    <hr class="second-hr">
+                    <div class="d-flex justify-content-between">
+                        <h6>TOTAL</h6>
+                        <p>$230.50</p>
+                    </div>
+
+                    <button class="ml-auto">PROCEED TO CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="mt-5 py-5">
 

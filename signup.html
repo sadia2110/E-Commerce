@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background:rgb(249, 152, 117);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .form-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .google-btn img {
+            width: 22px;
+            margin-right: 10px;
+        }
+
+        .divider {
+            margin: 20px 0;
+            font-size: 14px;
+            color: #888;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            width: 40%;
+            height: 1px;
+            background: #ddd;
+            top: 50%;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #206bbb;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .terms {
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .terms a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        .signin {
+            font-size: 15px;
+            margin-top: 20px;
+        }
+
+        .signin a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Join Us!!</h2>
+            <button class="google-btn">
+                <img src="./img/signup/googleicon.png" alt="Google Logo" />
+                Sign up with Google
+            </button>
+            <div class="divider">OR</div>
+            <input type="email" placeholder="Enter Your Email" />
+            <button class="continue-btn">Continue</button>
+            <p id="message" style="color: green; font-size: 18px; margin-top: 20px;"></p>
+
+            <p class="terms">
+                By signing up, you acknowledge that you have read and
+                agree to the terms.
+                <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
+            </p>
+            <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector(".continue-btn").addEventListener("click", function () {
+            let email = document.querySelector("input[type='email']").value;
+            let messageBox = document.getElementById("message");
+            let termsSection = document.querySelector(".terms");
+            let signinSection = document.querySelector(".signin"); // Select the terms section
+    
+            if (email === "") {
+                messageBox.style.color = "red";
+                messageBox.textContent = "⚠ Please enter your email.";
+            } else {
+                localStorage.setItem("userEmail", email);
+                messageBox.style.color = "green";
+                messageBox.innerHTML = " Sign-up successful!<br> Your email (" + email + ") has been saved.<br> Thanks for joining!";
+    
+                // Hide the terms section
+                termsSection.style.display = "none";
+                signinSection.style.display = "none";
+            }
+        });
+    </script>
+    
+    
+    
+    
+</body>
+
+</html>
