@@ -5,6 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up Form</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+
     <style>
         * {
             margin: 0;
@@ -13,12 +20,87 @@
             font-family: Arial, sans-serif;
         }
 
+        .navbar {
+    font-size: 16px;
+    top: 0;
+    left: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    padding: 0 20px;
+    color: black;
+    transition: 0.3s ease;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar i:hover,
+.navbar i.active,
+.navbar-light .navbar-nav .nav-link.active {
+    color: coral;
+}
+
+.navbar i {
+    font-size: 1.2rem;
+    padding: 0 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+
+}
+
+
+#bar {
+    font-size: 1.5rem;
+    padding: 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+    color: black;
+}
+
+#bar:hover,
+#bar.active {
+    color: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+
+    body>nav>div>button:hover,
+    body>nav>div>button:focus {
+        background-color: #fb774b;
+    }
+
+    body>nav>div>button:hover #bar,
+    body>nav>div>button:focus #bar {
+        background-color: #fb774b;
+    }
+
+
+
+    #navbarSupportedContent>ul {
+        margin: 1rem;
+        justify-content: flex-end;
+        align-items: flex-end;
+        text-align: right
+    }
+
+    #navbarSupportedContent>ul>li:nth-child(n)>a {
+        padding: 10px 0;
+    }
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+    outline: none;
+}
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background:rgb(249, 152, 117);
+            background: rgb(250, 198, 179);
         }
 
         .container {
@@ -134,6 +216,42 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 fixed-top">
+        <div class="container">
+            <img src="img/logo1.png" alt="">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span><i id="bar" class="fas fa-bars"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href=""> <i class="fal fa-search"></i></a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="cart.html"><i class="fal fa-shopping-cart"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="signup.html"><i class="fas fa-user"></i></a>
+                    </li>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="form-box">
             <h2>Join Us!!</h2>
@@ -161,7 +279,7 @@
             let messageBox = document.getElementById("message");
             let termsSection = document.querySelector(".terms");
             let signinSection = document.querySelector(".signin"); // Select the terms section
-    
+
             if (email === "") {
                 messageBox.style.color = "red";
                 messageBox.textContent = "⚠ Please enter your email.";
@@ -169,17 +287,17 @@
                 localStorage.setItem("userEmail", email);
                 messageBox.style.color = "green";
                 messageBox.innerHTML = " Sign-up successful!<br> Your email (" + email + ") has been saved.<br> Thanks for joining!";
-    
+
                 // Hide the terms section
                 termsSection.style.display = "none";
                 signinSection.style.display = "none";
             }
         });
     </script>
-    
-    
-    
-    
+
+
+
+
 </body>
 
 </html>

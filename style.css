@@ -266,6 +266,15 @@ hr {
     background-color: #fb774b;
 }
 
+.btn{
+    background-color: #2a2a2a;
+}
+
+.btn:hover{
+    color: #222222;
+    background-color: #fb774b;
+}
+
 footer {
     background-color: #222222;
 }
