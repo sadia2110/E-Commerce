@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clothing Store Search Page</title>
+
+    <!-- Bootstrap 4.1.3 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Font Awesome 5.10.0 -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <style>
+        .navbar {
+            font-size: 16px;
+            top: 0;
+            left: 0;
+            box-shadow: 0 5px 10px rgba(42, 41, 41, 0.1);
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            padding: 0 20px;
+            color: black;
+            transition: 0.3s ease;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar i:hover,
+        .navbar i.active,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: coral;
+        }
+
+        .navbar i {
+            font-size: 1.2rem;
+            padding: 0 7px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        body {
+            padding-top: 80px;
+        }
+
+        .btn {
+            color: #222222;
+            background-color: #fb774b;
+        }
+
+        .btn:hover {
+            color: #fb774b;
+            background-color: #2a2a2a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
+        <div class="container">
+            <img src="img/logo1.png" alt="Logo" height="40">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i id="bar" class="fas fa-bars"></i></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="search.html"><i class="fal fa-search"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html"><i class="fal fa-shopping-cart"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html"><i class="fas fa-user"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Search Bar -->
+        <div class="input-group mb-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search for items...">
+            <div class="input">
+                <button class="btn" onclick="searchProducts()"><i class="fas fa-search mr-1"></i>Search</button>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3 mb-4">
+                <h5><i class="fas fa-filter mr-1"></i>Filters</h5>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select id="categoryFilter" class="form-control">
+                        <option value="">All</option>
+                        <option value="Tops">Tops</option>
+                        <option value="Bottoms">Bottoms</option>
+                        <option value="Outerwear">Outerwear</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Minimum Price</label>
+                    <select id="priceFilter" class="form-control">
+                        <option value="">All</option>
+                        <option value="50">$50+</option>
+                        <option value="60">$60+</option>
+                        <option value="85">$85+</option>
+                    </select>
+                </div>
+                <button class="btn btn-outline-secondary" onclick="clearFilters()">
+                    <i class="fas fa-undo-alt mr-1 p-1"></i>Clear Filters
+                </button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="col-md-9">
+                <div id="productGrid" class="row"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Data -->
+    <script>
+        const products = [
+            { name: "Sport Boots", category: "Outerwear", price: 92.00, img: "img/featured/1.jpg" },
+            { name: "Blazer", category: "Tops", price: 92.99, img: "img/clothes/1.jpg" },
+            { name: "Black Jeans", category: "Bottoms", price: 39.99, img: "img/jeans.jpg" },
+            { name: "Sneakers", category: "Outerwear", price: 49.99, img: "img/featured/2.jpg" },
+            { name: "T-shirt", category: "Tops", price: 14.99, img: "img/clothes/3.jpg" }
+        ];
+    </script>
+
+    <!-- Script Logic -->
+    <script>
+        function displayProducts(filtered) {
+            const grid = document.getElementById("productGrid");
+            grid.innerHTML = "";
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "<p>No products found.</p>";
+                return;
+            }
+
+            filtered.forEach(product => {
+                const card = `
+                    <div class="col-md-4 mb-4">
+                        <div class="card product-card">
+                            <img src="${product.img}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">$${product.price.toFixed(2)}</p>
+                                <p class="text-muted small">${product.category}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function searchProducts() {
+            const query = document.getElementById("searchInput").value.toLowerCase();
+            const selectedCategory = document.getElementById("categoryFilter").value;
+            const minPrice = parseFloat(document.getElementById("priceFilter").value);
+
+            let filtered = products.filter(p =>
+                p.name.toLowerCase().includes(query) &&
+                (selectedCategory === "" || p.category === selectedCategory) &&
+                (isNaN(minPrice) || p.price >= minPrice)
+            );
+
+            displayProducts(filtered);
+        }
+
+        function clearFilters() {
+            document.getElementById("searchInput").value = "";
+            document.getElementById("categoryFilter").value = "";
+            document.getElementById("priceFilter").value = "";
+            displayProducts(products);
+        }
+
+        window.onload = () => {
+            displayProducts(products);
+        };
+    </script>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
